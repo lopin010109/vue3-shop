@@ -103,6 +103,15 @@ function addToCart() {
     max-width: 100%;
     object-fit: contain;
   }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    min-height: 260px;
+
+    img {
+      max-height: 220px;
+    }
+  }
 }
 
 .info {
@@ -116,6 +125,10 @@ function addToCart() {
   font-weight: 600;
   line-height: 1.4;
   color: #222;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 .rating {
@@ -133,6 +146,10 @@ function addToCart() {
   font-size: 32px;
   font-weight: bold;
   color: #409eff;
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
 }
 
 .description {
