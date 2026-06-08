@@ -97,6 +97,14 @@ const paginatedProducts = computed(() => {
 
 .filters {
   margin-bottom: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+
+  :deep(.el-radio-group) {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
 
   :deep(.el-radio-button__inner) {
     text-transform: capitalize;

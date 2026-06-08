@@ -40,46 +40,41 @@ const { t } = useLocale();
             <p class="item-price">${{ item.product.price.toFixed(2) }}</p>
           </div>
 
-          <div class="item-actions">
+          <div class="item-right">
             <el-input-number
               :model-value="item.quantity"
               :min="1"
               :max="99"
-              size="small"
               @change="
                 (val: number | undefined) =>
                   cartStore.updateQuantity(item.product.id, val ?? 1)
               "
             />
+            <p class="item-subtotal">
+              ${{ (item.product.price * item.quantity).toFixed(2) }}
+            </p>
             <el-button
               text
               type="danger"
-              size="small"
               @click="cartStore.removeItem(item.product.id)"
             >
               {{ t('cart.remove') }}
             </el-button>
           </div>
-
-          <p class="item-subtotal">
-            ${{ (item.product.price * item.quantity).toFixed(2) }}
-          </p>
         </div>
       </div>
 
       <div class="cart-summary">
         <h2>{{ t('cart.total') }}</h2>
         <p class="total-price">${{ cartStore.totalPrice.toFixed(2) }}</p>
-        <el-button type="primary" size="large" style="width: 100%">
-          {{ t('cart.checkout') }}
-        </el-button>
-        <el-button
-          size="large"
-          style="width: 100%"
-          @click="cartStore.clearCart()"
-        >
-          清空購物車
-        </el-button>
+        <div class="summary-actions">
+          <el-button type="primary" size="large">
+            {{ t('cart.checkout') }}
+          </el-button>
+          <el-button size="large" @click="cartStore.clearCart()">
+            清空購物車
+          </el-button>
+        </div>
       </div>
     </div>
   </div>
@@ -115,33 +110,58 @@ const { t } = useLocale();
 
 .cart-item {
   display: grid;
-  grid-template-columns: 80px 1fr auto auto;
-  gap: 16px;
-  align-items: center;
-  padding: 16px 0;
+  grid-template-columns: 100px 1fr auto;
+  column-gap: 24px;
+  row-gap: 20px;
+  align-items: start;
+  padding: 20px 0;
   border-bottom: 1px solid #eee;
 
   @media (max-width: 600px) {
-    grid-template-columns: 64px 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: 88px 1fr;
+    row-gap: 12px;
+
+    .item-right {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      :deep(.el-button.is-text) {
+        width: 100%;
+        justify-content: flex-end;
+        padding-right: 0;
+        margin-top: 4px;
+      }
+    }
   }
 }
 
 .item-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   background: #fafafa;
-  border-radius: 4px;
-  padding: 4px;
+  border-radius: 6px;
+  padding: 8px;
+
+  @media (max-width: 600px) {
+    width: 88px;
+    height: 88px;
+  }
 }
 
 .item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 360px;
+
   .item-title {
-    font-size: 14px;
+    font-size: 15px;
     color: #333;
-    line-height: 1.4;
-    margin-bottom: 8px;
+    line-height: 1.5;
 
     &:hover {
       color: #409eff;
@@ -149,23 +169,27 @@ const { t } = useLocale();
   }
 
   .item-price {
-    font-size: 13px;
+    font-size: 14px;
     color: #999;
   }
 }
 
-.item-actions {
+.item-right {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 8px;
+
+  :deep(.el-button.is-text) {
+    padding-right: 0;
+  }
 }
 
 .item-subtotal {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #409eff;
-  text-align: right;
+  white-space: nowrap;
 }
 
 .cart-summary {
@@ -185,6 +209,17 @@ const { t } = useLocale();
     font-size: 32px;
     font-weight: bold;
     color: #409eff;
+  }
+}
+
+.summary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  :deep(.el-button) {
+    width: 100%;
+    margin: 0;
   }
 }
 </style>
