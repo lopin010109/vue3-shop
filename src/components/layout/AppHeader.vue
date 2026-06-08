@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { useCartStore } from '@/stores/cart';
 import { useAuthStore } from '@/stores/auth';
 import { useLocale } from '@/composables/useLocale';
@@ -10,7 +10,6 @@ const { t, locale, toggleLocale } = useLocale();
 const cartStore = useCartStore();
 const authStore = useAuthStore();
 const router = useRouter();
-const route = useRoute();
 
 const menuOpen = ref(false);
 
