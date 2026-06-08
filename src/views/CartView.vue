@@ -47,7 +47,8 @@ const { t } = useLocale();
               :max="99"
               size="small"
               @change="
-                (val: number) => cartStore.updateQuantity(item.product.id, val)
+                (val: number | undefined) =>
+                  cartStore.updateQuantity(item.product.id, val ?? 1)
               "
             />
             <el-button

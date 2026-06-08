@@ -50,7 +50,27 @@ const paginatedProducts = computed(() => {
       style="margin-bottom: 24px"
     />
 
-    <div v-loading="productStore.loading" class="grid">
+    <template v-if="productStore.loading">
+      <div class="grid">
+        <el-skeleton v-for="n in 8" :key="n" animated>
+          <template #template>
+            <el-skeleton-item
+              variant="image"
+              style="height: 200px; border-radius: 4px"
+            />
+            <div style="padding: 16px">
+              <el-skeleton-item
+                variant="p"
+                style="width: 100%; margin-bottom: 8px"
+              />
+              <el-skeleton-item variant="p" style="width: 60%" />
+            </div>
+          </template>
+        </el-skeleton>
+      </div>
+    </template>
+
+    <div v-else class="grid">
       <ProductCard
         v-for="product in paginatedProducts"
         :key="product.id"
