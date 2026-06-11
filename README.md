@@ -4,7 +4,7 @@
 用於學習 Composition API、Pinia 狀態管理與多語系實作。
 
 ## Demo
-https://vue3-shop-phi.vercel.app
+https://vue3-shop-eosin.vercel.app/
 
 ## 技術棧
 - Vue 3 (Composition API)
