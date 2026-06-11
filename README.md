@@ -1,5 +1,26 @@
-# Vue 3 + TypeScript + Vite
+# Vue3 Shop
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+使用 Vue 3 + TypeScript 開發的電商購物網站練習專案，
+用於學習 Composition API、Pinia 狀態管理與多語系實作。
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Demo
+https://vue3-shop-phi.vercel.app
+
+## 技術棧
+- Vue 3 (Composition API)
+- TypeScript
+- Vite
+- Pinia（狀態管理）
+- Vue Router
+- Element Plus
+- vue-i18n（多語系）
+- Axios
+- SCSS
+- 部署：Vercel
+
+## 功能
+- 商品列表瀏覽
+- 購物車
+- 多語系切換
+- [其他功能]
+  
