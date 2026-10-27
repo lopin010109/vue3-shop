@@ -19,6 +19,10 @@ export default defineConfig({
       dts: 'src/components.d.ts',
     }),
   ],
+  define: {
+    // vue-i18n 9.3+：用 JIT 編譯翻譯訊息，不用 Function()／eval，CSP 才能不開 'unsafe-eval'（v10 起為預設）
+    __INTLIFY_JIT_COMPILATION__: true,
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
